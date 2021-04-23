@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,200&display=swap');
+
+body {
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #030002, #27262A);
+}
+
+.main-home-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-button {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15em;
+  text-decoration: none;
+  transition: font-size 2s;
+}
+
+.play-button:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.play-button:hover {
+  font-size: 18em;
+}
