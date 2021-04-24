@@ -1,0 +1,11 @@
+.gameboard {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+}
+
+button[class^="gameSquare"] {
+  margin: 3px;
+  height: 17vh;
+  width: 23vw;
+}
