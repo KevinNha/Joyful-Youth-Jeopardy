@@ -1,11 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .gameboard {
+  max-width: 850px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding: 10px;
+  position: 50%;
+  /* transform:translate(0%, -50%); */
+}
+
+.title {
+  font-family: 'Anton', sans-serif;
+  font-size: 30pt;
+}
+
+.score {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 30pt;;
 }
 
 button[class^="gameSquare"] {
   margin: 3px;
   height: 17vh;
-  width: 23vw;
+  max-width: 212px;
+  min-width: 212px;
+  width: 100%;
+  transition: transform 1s;
+  border-radius: 10px;
+  border: 2px white;
+}
+
+.score:hover {
+  transform: scale(1.1);
+}
+
+.center {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.inactive {
+  width:80%;
+  height:80%;
+  padding:30px 20px;
+  background:#f5f5f5;
+  border-radius:10px;
+  box-sizing:border-box;
+  z-index:2;
+  text-align:center;
+  opacity:0;
+  top:-200%;
+  transform:translate(-50%,-50%) scale(0.5);
+  transition: opacity 300ms ease-in-out,
+  top 1000ms ease-in-out,
+  transform 1000ms ease-in-out;
+}
+
+.active {
+  opacity:1;
+  top:50%;
+
+  width:80%;
+  height:80%;
+  padding:30px 20px;
+  background:#f5f5f5;
+  border-radius:10px;
+  box-sizing:border-box;
+  z-index:2;
+  text-align:center;
+  transform:translate(-50%,-50%) scale(1);
+  transition: transform 300ms cubic-bezier(0.18,0.89,0.43,1.19);
+}
+
+.fa-times {
+  color: black;
+  font-size: 4rem;
+  float: right;
+  top: -20px;
+  transform:translate(0%,-50%);
+}
+
+#question {
+  font-size: 66pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#question ul {
+  text-align:left;
+  list-style: inside;
+}
+
+#question li {
+  width: 100%;
+  text-align: left;
 }

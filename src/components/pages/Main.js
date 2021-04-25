@@ -1,45 +1,112 @@
-import { render } from '@testing-library/react';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import JeopardyBox from '../JeopardyBox';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import './Main.css'
 
 function Main() {
+  const [popup, setPopup] = useState(true);
 
-  const boardSize = 4;
-  const root = <div className='gameboard'></div>
-
-  const renderSquare = (squareNum, text) => {
-    return <JeopardyBox cName = {squareNum}> {text} </JeopardyBox>
+  const renderSquare = (squareNum, text, question) => {
+    return <JeopardyBox cName = {squareNum} question = {question}> {text}</JeopardyBox>
   }
 
+  const handleCloseClick = () => {
+    if (popup) {
+      document.getElementById('popup').classList.remove('active');
+      document.getElementById('popup').classList.add('inactive');
+      document.getElementById('question').innerText = "";
+      setPopup(false);
+    }
+    setPopup(true);
+  }
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      handleCloseClick();
+    }
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.addEventListener('keydown', handleKeyPress);
+  },[])
 
   return (
     <>
+    <div id="popup" className="center inactive">
+      <FontAwesomeIcon icon={faTimes} className="icon" onClick={handleCloseClick}/>
+      <span id="question"></span>
+    </div>
     <div className="gameboard">
-      {renderSquare("category1", "BIBLICAL FIGURES")}
-      {renderSquare("category2", "GUESS THE SOUND")}
-      {renderSquare("category3", "ETC")}
-      {renderSquare("category4", "ETC")}
-      {renderSquare("1.1")}
-      {renderSquare("1.2")}
-      {renderSquare("1.3")}
-      {renderSquare("1.4")}
-      {renderSquare("2.1")}
-      {renderSquare("2.2")}
-      {renderSquare("2.3")}
-      {renderSquare("2.4")}
-      {renderSquare("3.1")}
-      {renderSquare("3.2")}
-      {renderSquare("3.3")}
-      {renderSquare("3.4")}
-      {renderSquare("4.1")}
-      {renderSquare("4.2")}
-      {renderSquare("4.3")}
-      {renderSquare("4.4")}
-      </div>
+      <button className="gameSquare-category1 title">
+        <span>BIBLICAL FIGURES</span>
+      </button>
+      <button className="gameSquare-category2 title">
+        <span>GUESS THE SOUND</span>
+      </button>
+      <button className="gameSquare-category3 title">
+        <span>BIRTHDAYS</span>
+      </button>
+      <button className="gameSquare-category4 title">
+        <span>ETC</span>
+      </button>
+      {renderSquare("1.1 score", "100", 
+                    "<ul>" + 
+                      "<li>The Red Sea</li>" +
+                    "<ul>")}
+      {renderSquare("1.2 score", "100",
+                    "<ul>" + 
+                      "<li>Listen carefully...</li>" +
+                    "<ul>")}
+      {renderSquare("1.3 score", "100",
+                    "<ul>" + 
+                      "<li>Merry Christmas!</li>" +
+                    "<ul>")}
+      {renderSquare("1.4 score", "100")}
+      {renderSquare("2.1 score", "200",
+                    "<ul>" + 
+                      "<li>Fish</li>" +
+                    "<ul>")}
+      {renderSquare("2.2 score", "200",
+                    "<ul>" + 
+                      "<li> DOUBLE POINTS! </li>" +
+                      "<li>Listen carefully...</li>" +
+                    "<ul>")}
+      {renderSquare("2.3 score", "200",
+                    "<ul>" + 
+                      "<li>Birthday is December 25th</li>" +
+                    "<ul>")}
+      {renderSquare("2.4 score", "200")}
+      {renderSquare("3.1 score", "300",
+                    "<ul>" + 
+                      "<li>Two spies</li>" +
+                    "<ul>")}
+      {renderSquare("3.2 score", "300",
+                    "<ul>" + 
+                      "<li>Listen carefully...</li>" +
+                    "<ul>")}
+      {renderSquare("3.3 score", "300",
+                    "<ul>" + 
+                      "<li>This person was on the news</li>" +
+                    "<ul>")}
+      {renderSquare("3.4 score", "300")}
+      {renderSquare("4.1 score", "400",
+                    "<ul>" + 
+                      "<li>This person was on the news</li>" +
+                    "<ul>")}
+      {renderSquare("4.2 score", "400",
+                    "<ul>" + 
+                      "<li>Listen carefully...</li>" +
+                    "<ul>")}
+      {renderSquare("4.3 score", "400",
+                    "<ul>" + 
+                      "<li>cm tall</li>" +
+                    "<ul>")}
+      {renderSquare("4.4 score", "400")}
+    </div>
     </>
   );
 }
 
+//https://www.youtube.com/watch?v=LqBmbgD_2Ig
 export default Main;
