@@ -48,7 +48,7 @@ function Main() {
         <span>BIRTHDAYS</span>
       </button>
       <button className="gameSquare-category4 title">
-        <span>ETC</span>
+        <span>NONSENSE</span>
       </button>
       {renderSquare("1.1 score", "100", 
                     "<ul>" + 
@@ -62,7 +62,8 @@ function Main() {
                     "<ul>" + 
                       "<li>Merry Christmas!</li>" +
                     "<ul>")}
-      {renderSquare("1.4 score", "100")}
+      {renderSquare("1.4 score", "100",
+                    "방귀 뀌지 마! 를 영어로 하면?")}
       {renderSquare("2.1 score", "200",
                     "<ul>" + 
                       "<li>Fish</li>" +
@@ -76,7 +77,8 @@ function Main() {
                     "<ul>" + 
                       "<li>Birthday is December 25th</li>" +
                     "<ul>")}
-      {renderSquare("2.4 score", "200")}
+      {renderSquare("2.4 score", "200", 
+                    "What can one catch that is not thrown?")}
       {renderSquare("3.1 score", "300",
                     "<ul>" + 
                       "<li>Two spies</li>" +
@@ -89,7 +91,8 @@ function Main() {
                     "<ul>" + 
                       "<li>This person was on the news</li>" +
                     "<ul>")}
-      {renderSquare("3.4 score", "300")}
+      {renderSquare("3.4 score", "300", 
+                    "이 세상에서 제일 빨리 왕이 된 사람은?")}
       {renderSquare("4.1 score", "400",
                     "<ul>" + 
                       "<li>This person was on the news</li>" +
@@ -100,9 +103,10 @@ function Main() {
                     "<ul>")}
       {renderSquare("4.3 score", "400",
                     "<ul>" + 
-                      "<li>cm tall</li>" +
+                      "<li>180cm tall</li>" +
                     "<ul>")}
-      {renderSquare("4.4 score", "400")}
+      {renderSquare("4.4 score", "400", 
+                    "성경 인물 중에서 장사를 제일 잘하는 사람은?")}
     </div>
     </>
   );
